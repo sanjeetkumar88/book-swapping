@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
+import Image from 'next/image';
 
 export default function Dashboard() {
   const { user, loading, logout, refreshUser } = useAuth();
@@ -244,10 +245,17 @@ export default function Dashboard() {
                   {books.map((book) => (
                     <div key={book._id} className="group bg-white/50 backdrop-blur-sm rounded-2xl p-3 sm:p-4 hover:bg-white/70 transition-all duration-300 hover:scale-105 border border-white/20">
                       <div className="relative overflow-hidden rounded-xl mb-3">
-                        <img 
+                        {/* <img 
                           src={book.coverImage} 
                           alt={book.title}
                           className="w-full h-32 sm:h-40 object-cover group-hover:scale-110 transition-transform duration-300"
+                        /> */}
+                        <Image
+                          src={book.coverImage}
+                          alt={book.title}
+                          width={400}
+                          height={300}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
@@ -283,9 +291,16 @@ export default function Dashboard() {
                 <div className="text-center">
                   <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg overflow-hidden">
                     {user.profilePicture ? (
-                      <img 
-                        src={user.profilePicture} 
+                      // <img 
+                      //   src={user.profilePicture} 
+                      //   alt={user.name}
+                      //   className="w-full h-full object-cover"
+                      // />
+                      <Image
+                        src={user.profilePicture}
                         alt={user.name}
+                        width={96}
+                        height={96}
                         className="w-full h-full object-cover"
                       />
                     ) : (

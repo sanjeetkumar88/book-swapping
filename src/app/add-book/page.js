@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useAuth } from '@/hooks/useAuth';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 
 export default function AddBook() {
   const { data: session, status } = useSession();
@@ -316,13 +317,20 @@ export default function AddBook() {
               {/* Current Image Preview */}
               {formData.coverImage && (
                 <div className="mb-3">
-                  <img 
+                  {/* <img 
                     src={formData.coverImage} 
                     alt="Book cover preview"
                     className="w-32 h-48 object-cover rounded border"
                     onError={(e) => {
                       e.target.style.display = 'none';
                     }}
+                  /> */}
+                  <Image
+                    src={formData.coverImage}
+                    alt="Book cover preview"
+                    width={128}
+                    height={192}
+                    className="w-32 h-48 object-cover rounded border"
                   />
                 </div>
               )}

@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 
 export default function Books() {
   const { data: session } = useSession();
@@ -309,10 +310,17 @@ export default function Books() {
               {books.map((book) => (
                 <div key={book._id} className="group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-white/20 overflow-hidden">
                   <div className="relative overflow-hidden">
-                    <img 
+                    {/* <img 
                       src={book.coverImage} 
                       alt={book.title}
                       className="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-300"
+                    /> */}
+                    <Image
+                      src={book.coverImage}
+                      alt={book.title}
+                      width={400}
+                      height={300}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>

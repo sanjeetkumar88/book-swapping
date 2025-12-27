@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react';
 import Navbar from '@/components/Navbar';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 
 export default function AllUploadersPage() {
   const router = useRouter();
@@ -178,11 +179,18 @@ export default function AllUploadersPage() {
                 {/* Profile Picture as Header Image */}
                 <div className="w-full h-48 sm:h-56 bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center relative">
                   {user.profilePicture ? (
-                    <img
+                    // <img
+                    //   src={user.profilePicture}
+                    //   alt={user.name}
+                    //   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    // />
+                    <Image
                       src={user.profilePicture}
                       alt={user.name}
+                      width={400}
+                      height={300}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
+                    />  
                   ) : (
                     <div className="w-32 h-32 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center text-white text-4xl font-bold">
                       {user.name?.charAt(0)?.toUpperCase() || 'U'}
